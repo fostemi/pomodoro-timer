@@ -4,7 +4,5 @@ This will provied options to create files and run code in the
 src/ directory.
 """
 
-def generate():
+def generateCode():
     pass
-
-
