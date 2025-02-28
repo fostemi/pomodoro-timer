@@ -11,13 +11,14 @@ def generateCode():
     client = OpenAI(
         api_key=os.environ.get("OPENAI_API_KEY")
     )
+    print("Writing python...")
     completion = client.chat.completions.create(
         model="gpt-4o",
         store=True,
         messages=[
-            {"role": "user", "content": "write a haiku about ai"}
+            {"role": "user", "content": "Write a simple python program that will create a pong app."}
         ]
     )
-    print(completion)
+    print(completion.content)
 
 generateCode()
