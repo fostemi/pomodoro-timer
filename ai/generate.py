@@ -10,7 +10,7 @@ from openai import OpenAI
 code_prompt = """
 Write a simple python program that will create a timer application. \
 Have the output be just the code. \
-Exclude the python at the begginning of the code.
+Exclude the 'python' and tripple backticks at the begginning of the code.
 """
 
 temp_dir = "./tmp"
@@ -31,6 +31,9 @@ def generate_code():
     content = completion.choices[0].message.content
 
     # Write to file
+    if (os.path.isfile(temp_dir + "/timer.py")):
+        os.remove(temp_dir + "/timer.py")
+
     if (os.path.isdir(temp_dir) == False):
         os.mkdir(temp_dir)
     filepath = temp_dir + "/timer.py"
@@ -38,7 +41,7 @@ def generate_code():
     with open(filepath, "w") as file:
         file.write(content)
 
-    delete_line(filepath, 1)
+    # delete_line(filepath, 1)
     # delete_last_line(filepath)
 
     print("Content Written")

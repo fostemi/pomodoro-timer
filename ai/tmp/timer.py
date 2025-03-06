@@ -1,15 +1,21 @@
+import time
 
-def countdown_timer(seconds):
+def timer(seconds):
     while seconds:
         mins, secs = divmod(seconds, 60)
-        timer_format = f'{mins:02}:{secs:02}'
+        timer_format = '{:02d}:{:02d}'.format(mins, secs)
         print(timer_format, end='\r')
         time.sleep(1)
         seconds -= 1
+    
     print("Time's up!")
 
-if __name__ == '__main__':
+def main():
     try:
-        total_seconds = int(input("Enter the time in seconds: "))
-        countdown_timer(total_seconds)
+        seconds = int(input("Enter the time in seconds: "))
+        timer(seconds)
     except ValueError:
+        print("Please enter a valid integer.")
+
+if __name__ == "__main__":
+    main()
