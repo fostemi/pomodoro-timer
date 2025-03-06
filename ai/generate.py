@@ -30,9 +30,6 @@ def generate_code():
     with open(filepath, "w") as file:
         file.write(content)
 
-    # delete_line(filepath, 1)
-    # delete_last_line(filepath)
-
     print("Content Written")
     print(content)
 
