@@ -4,8 +4,7 @@ This will provied options to create files and run code in the
 src/ directory.
 """
 import os
-
-from openai import OpenAI
+from utils import *
 
 code_prompt = """
 Write a simple python program that will create a timer application. \
@@ -16,21 +15,11 @@ Exclude the 'python' and tripple backticks at the begginning of the code.
 temp_dir = "./tmp"
 
 def generate_code():
-    client = OpenAI(
-        api_key=os.environ.get("OPENAI_API_KEY")
-    )
     print("Writing python...")
-    completion = client.chat.completions.create(
-        model="gpt-4o",
-        store=True,
-        messages=[
-            {"role": "user", "content": code_prompt}
-        ]
-    )
+    completion = get_completion(code_prompt)
 
     content = completion.choices[0].message.content
 
-    # Write to file
     if (os.path.isfile(temp_dir + "/timer.py")):
         os.remove(temp_dir + "/timer.py")
 
