@@ -63,5 +63,3 @@ def delete_last_line(filepath):
         print(f"Error: File {filepath} not found")
     except Exception as e:
         print(f"Error: {e}")
-
-generate_code()
